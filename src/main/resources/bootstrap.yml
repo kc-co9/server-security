@@ -1,0 +1,7 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /
+
+spring:
+  application.name: server-security
