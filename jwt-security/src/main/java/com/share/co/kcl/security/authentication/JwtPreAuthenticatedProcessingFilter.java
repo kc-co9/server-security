@@ -18,10 +18,11 @@ public class JwtPreAuthenticatedProcessingFilter extends AbstractPreAuthenticate
 
     @Override
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
-        String token = request.getHeader(RequestParamsConstants.TOKEN);
-        String jwtString = SecurityUtils.parseToken(token);
-        JwtObject jwtObject = JSON.parseObject(jwtString, JwtObject.class);
-        return Optional.ofNullable(jwtObject).map(JwtObject::getUserId).orElse(null);
+        return Optional.ofNullable(request.getHeader(RequestParamsConstants.TOKEN))
+                .map(SecurityUtils::parseToken)
+                .map(json -> JSON.parseObject(json, JwtObject.class))
+                .map(JwtObject::getUserId)
+                .orElse(null);
     }
 
     @Override

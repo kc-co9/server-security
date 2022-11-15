@@ -102,7 +102,6 @@ public class JwtAuthenticationProcessingFilterTests {
         request.addHeader(RequestParamsConstants.TOKEN, MockRequestParamsConstants.MOCK_TOKEN);
 
         try (MockedStatic<SecurityUtils> mockStatic = mockStatic(SecurityUtils.class)) {
-            //noinspection ResultOfMethodCallIgnored
             mockStatic.when(() -> SecurityUtils.parseToken(MockRequestParamsConstants.MOCK_TOKEN))
                     .thenAnswer((Answer<String>) invocation -> JSON.toJSONString(new JwtObject(MockRequestParamsConstants.MOCK_USER_ID)));
 
@@ -126,14 +125,10 @@ public class JwtAuthenticationProcessingFilterTests {
         MockFilterChain filterChain = new MockFilterChain();
 
         try (MockedStatic<SecurityUtils> mockStatic = mockStatic(SecurityUtils.class)) {
-            //noinspection ResultOfMethodCallIgnored
             mockStatic.when(() -> SecurityUtils.parseToken(any())).thenAnswer(invocation -> null);
 
             AuthenticationManager am = MockAuthenticationManagerFactory.createJwtProviderAuthenticationManager();
             JwtAuthenticationProcessingFilter jwtAuthenticationProcessingFilter = new JwtAuthenticationProcessingFilter(am);
-            jwtAuthenticationProcessingFilter.setAuthenticationFailureHandler((req, resp, exception) -> {
-                throw exception;
-            });
             jwtAuthenticationProcessingFilter.doFilter(request, response, filterChain);
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -147,18 +142,14 @@ public class JwtAuthenticationProcessingFilterTests {
         MockHttpServletResponse response = new MockHttpServletResponse();
         MockFilterChain filterChain = new MockFilterChain();
 
-        request.addHeader(RequestParamsConstants.TOKEN, MockRequestParamsConstants.MOCK_TOKEN);
+        request.addHeader(RequestParamsConstants.TOKEN, MockRequestParamsConstants.MOCK_ERROR_TOKEN);
 
         try (MockedStatic<SecurityUtils> mockStatic = mockStatic(SecurityUtils.class)) {
-            //noinspection ResultOfMethodCallIgnored
-            mockStatic.when(() -> SecurityUtils.parseToken(MockRequestParamsConstants.MOCK_TOKEN))
+            mockStatic.when(() -> SecurityUtils.parseToken(MockRequestParamsConstants.MOCK_ERROR_TOKEN))
                     .thenAnswer((Answer<String>) invocation -> JSON.toJSONString(new JwtObject(MockRequestParamsConstants.MOCK_ERROR_USER_ID)));
 
             AuthenticationManager am = MockAuthenticationManagerFactory.createJwtProviderAuthenticationManager();
             JwtAuthenticationProcessingFilter jwtAuthenticationProcessingFilter = new JwtAuthenticationProcessingFilter(am);
-            jwtAuthenticationProcessingFilter.setAuthenticationFailureHandler((req, resp, exception) -> {
-                throw exception;
-            });
             jwtAuthenticationProcessingFilter.doFilter(request, response, filterChain);
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
