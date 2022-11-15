@@ -1,5 +1,6 @@
 package com.share.co.kcl.security.demo.controller;
 
+import com.share.co.kcl.security.common.model.JwtObject;
 import com.share.co.kcl.security.common.utils.SecurityUtils;
 import com.share.co.kcl.security.demo.exception.AccountException;
 import com.share.co.kcl.security.demo.model.entity.MockUser;
@@ -56,7 +57,8 @@ public class AccountController {
         if (!Objects.equals(user.getPassword(), request.getPassword())) {
             throw new AccountException("账号或密码不正确");
         }
-        return new AccountSignInResponse(SecurityUtils.echoToken(String.valueOf(user.getUserId())));
+        return new AccountSignInResponse(
+                SecurityUtils.echoToken(new JwtObject(String.valueOf(user.getUserId()))));
     }
 
 }

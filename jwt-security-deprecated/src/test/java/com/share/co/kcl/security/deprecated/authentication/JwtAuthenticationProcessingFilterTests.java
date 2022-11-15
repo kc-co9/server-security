@@ -103,7 +103,7 @@ public class JwtAuthenticationProcessingFilterTests {
 
         try (MockedStatic<SecurityUtils> mockStatic = mockStatic(SecurityUtils.class)) {
             mockStatic.when(() -> SecurityUtils.parseToken(MockRequestParamsConstants.MOCK_TOKEN))
-                    .thenAnswer((Answer<String>) invocation -> JSON.toJSONString(new JwtObject(MockRequestParamsConstants.MOCK_USER_ID)));
+                    .thenAnswer((Answer<JwtObject>) invocation -> new JwtObject(MockRequestParamsConstants.MOCK_USER_ID));
 
             AuthenticationManager am = MockAuthenticationManagerFactory.createJwtProviderAuthenticationManager();
             JwtAuthenticationProcessingFilter jwtAuthenticationProcessingFilter = new JwtAuthenticationProcessingFilter(am);
@@ -146,7 +146,7 @@ public class JwtAuthenticationProcessingFilterTests {
 
         try (MockedStatic<SecurityUtils> mockStatic = mockStatic(SecurityUtils.class)) {
             mockStatic.when(() -> SecurityUtils.parseToken(MockRequestParamsConstants.MOCK_ERROR_TOKEN))
-                    .thenAnswer((Answer<String>) invocation -> JSON.toJSONString(new JwtObject(MockRequestParamsConstants.MOCK_ERROR_USER_ID)));
+                    .thenAnswer((Answer<JwtObject>) invocation -> new JwtObject(MockRequestParamsConstants.MOCK_ERROR_USER_ID));
 
             AuthenticationManager am = MockAuthenticationManagerFactory.createJwtProviderAuthenticationManager();
             JwtAuthenticationProcessingFilter jwtAuthenticationProcessingFilter = new JwtAuthenticationProcessingFilter(am);

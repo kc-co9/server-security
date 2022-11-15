@@ -54,11 +54,7 @@ public class MockAuthenticationManagerFactory {
             if (Objects.isNull(credentials) || "".equals(credentials)) {
                 throw new BadCredentialsException("bad credentials");
             }
-            String jwtToken = SecurityUtils.parseToken(credentials);
-            if (StringUtils.isBlank(jwtToken)) {
-                throw new BadCredentialsException("bad credentials");
-            }
-            JwtObject jwtObject = JSON.parseObject(jwtToken, JwtObject.class);
+            JwtObject jwtObject = SecurityUtils.parseToken(credentials);
             if (Objects.isNull(jwtObject)) {
                 throw new BadCredentialsException("bad credentials");
             }

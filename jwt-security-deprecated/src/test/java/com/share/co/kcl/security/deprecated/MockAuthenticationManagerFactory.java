@@ -1,11 +1,9 @@
 package com.share.co.kcl.security.deprecated;
 
-import com.alibaba.fastjson.JSON;
 import com.share.co.kcl.security.common.model.JwtObject;
 import com.share.co.kcl.security.common.utils.SecurityUtils;
 import com.share.co.kcl.security.deprecated.authentication.manager.JwtAuthenticationProvider;
 import com.share.co.kcl.security.deprecated.constants.MockRequestParamsConstants;
-import org.junit.platform.commons.util.StringUtils;
 import org.mockito.stubbing.Answer;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
@@ -48,11 +46,7 @@ public class MockAuthenticationManagerFactory {
             if (Objects.isNull(credentials) || "".equals(credentials)) {
                 throw new BadCredentialsException("bad credentials");
             }
-            String jwtToken = SecurityUtils.parseToken(credentials);
-            if (StringUtils.isBlank(jwtToken)) {
-                throw new BadCredentialsException("bad credentials");
-            }
-            JwtObject jwtObject = JSON.parseObject(jwtToken, JwtObject.class);
+            JwtObject jwtObject = SecurityUtils.parseToken(credentials);
             if (Objects.isNull(jwtObject)) {
                 throw new BadCredentialsException("bad credentials");
             }

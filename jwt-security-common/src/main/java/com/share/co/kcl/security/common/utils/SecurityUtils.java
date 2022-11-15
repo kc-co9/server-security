@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -35,8 +36,10 @@ public class SecurityUtils {
      *
      * @return 返回值
      */
-    public static String echoToken(String userId) {
-        JwtObject jwtObject = new JwtObject(userId);
+    public static String echoToken(JwtObject jwtObject) {
+        if (Objects.isNull(jwtObject)) {
+            return "";
+        }
         return Jwts.builder()
                 .setSubject(null)
                 .claim(KEY_BODY, JSON.toJSONString(jwtObject))
@@ -51,16 +54,16 @@ public class SecurityUtils {
      * @param token 传入token
      * @return 返回解析数据
      */
-    public static String parseToken(String token) {
+    public static JwtObject parseToken(String token) {
         if (StringUtils.isBlank(token)) {
-            return "";
+            return null;
         }
         try {
             Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-            return (String) claims.get(KEY_BODY);
+            return JSON.parseObject((String) claims.get(KEY_BODY), JwtObject.class);
         } catch (Exception ignoreEx) {
         }
-        return "";
+        return null;
     }
 
     /**

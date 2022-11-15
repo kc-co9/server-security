@@ -53,8 +53,7 @@ public class JwtAuthenticationProcessingFilter extends AbstractAuthenticationPro
     @Override
     public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
         String token = httpServletRequest.getHeader(RequestParamsConstants.TOKEN);
-        String jwtString = SecurityUtils.parseToken(token);
-        JwtObject jwtObject = JSON.parseObject(jwtString, JwtObject.class);
+        JwtObject jwtObject = SecurityUtils.parseToken(token);
         JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(jwtObject, token);
         jwtAuthenticationToken.setDetails(this.authenticationDetailsSource.buildDetails(httpServletRequest));
         return this.getAuthenticationManager().authenticate(jwtAuthenticationToken);
