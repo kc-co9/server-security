@@ -29,7 +29,7 @@ knife4j:
     enableSearch: true
     enableFooter: false
     enableFooterCustom: true
-    footerCustomContent: Apache License 2.0 | Copyright  2022-[jwt-security-deprecated-demo]
+    footerCustomContent: Apache License 2.0 | Copyright  2022-[jwt-security-demo]
     enableDynamicParameter: true
     enableDebug: true
     enableOpenApi: true

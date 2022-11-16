@@ -1,6 +1,5 @@
 package com.share.co.kcl.security.authentication;
 
-import com.alibaba.fastjson.JSON;
 import com.share.co.kcl.security.common.model.JwtObject;
 import com.share.co.kcl.security.common.constants.RequestParamsConstants;
 import com.share.co.kcl.security.common.utils.SecurityUtils;

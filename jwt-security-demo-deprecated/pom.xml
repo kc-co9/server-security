@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>server-security</artifactId>
+        <groupId>com.share.co.kcl.security</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <name>jwt-security-demo-deprecated</name>
+    <artifactId>jwt-security-demo-deprecated</artifactId>
+    <description>jwt-security-demo-deprecated</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.share.co.kcl.security</groupId>
+            <artifactId>jwt-security-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.share.co.kcl.security</groupId>
+            <artifactId>jwt-security-deprecated</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

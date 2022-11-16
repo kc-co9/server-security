@@ -1,8 +1,8 @@
 package com.share.co.kcl.security.demo.service;
 
-import com.share.co.kcl.security.demo.model.entity.MockUser;
-import com.share.co.kcl.security.demo.model.security.JwtUserDetails;
-import com.share.co.kcl.security.demo.repository.MockUserAuthenticationRepository;
+import com.share.co.kcl.security.demo.common.model.entity.MockUser;
+import com.share.co.kcl.security.demo.common.model.security.JwtUserDetails;
+import com.share.co.kcl.security.demo.common.repository.MockUserAuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;

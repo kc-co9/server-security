@@ -9,14 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.share.co.kcl.security.annotation</groupId>
-    <artifactId>jwt-security-annotation</artifactId>
-
     <name>jwt-security-annotation</name>
+    <artifactId>jwt-security-annotation</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.share.co.kcl.security.common</groupId>
+            <groupId>com.share.co.kcl.security</groupId>
             <artifactId>jwt-security-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

@@ -9,10 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.share.co.kcl.security.common</groupId>
-    <artifactId>jwt-security-common</artifactId>
-
     <name>jwt-security-common</name>
+    <artifactId>jwt-security-common</artifactId>
 
     <dependencies>
         <dependency>

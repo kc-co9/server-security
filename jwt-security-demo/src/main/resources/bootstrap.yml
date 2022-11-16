@@ -4,4 +4,4 @@ server:
     context-path: /
 
 spring:
-  application.name: server-security
+  application.name: jwt-security-demo

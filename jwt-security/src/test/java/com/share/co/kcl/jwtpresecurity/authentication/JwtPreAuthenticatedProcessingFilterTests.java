@@ -1,6 +1,5 @@
 package com.share.co.kcl.jwtpresecurity.authentication;
 
-import com.alibaba.fastjson.JSON;
 import com.share.co.kcl.jwtpresecurity.MockAuthenticationFactory;
 import com.share.co.kcl.jwtpresecurity.MockAuthenticationManagerFactory;
 import com.share.co.kcl.jwtpresecurity.MockJwtPreAuthenticatedProcessingFilterFactory;

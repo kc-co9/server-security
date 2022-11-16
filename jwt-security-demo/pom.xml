@@ -8,15 +8,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.share.co.kcl.security.demo</groupId>
-    <artifactId>jwt-security-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>jwt-security-demo</name>
+    <artifactId>jwt-security-demo</artifactId>
     <description>jwt-security-demo</description>
 
     <dependencies>
         <dependency>
-            <groupId>com.share.co.kcl.security.external</groupId>
+            <groupId>com.share.co.kcl.security</groupId>
+            <artifactId>jwt-security-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.share.co.kcl.security</groupId>
             <artifactId>jwt-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -32,19 +36,7 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
-        </dependency>
+
     </dependencies>
 
 </project>

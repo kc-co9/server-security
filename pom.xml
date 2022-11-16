@@ -12,11 +12,12 @@
 
     <modules>
         <module>jwt-security</module>
-        <module>jwt-security-demo</module>
-        <module>jwt-security-deprecated-demo</module>
         <module>jwt-security-deprecated</module>
         <module>jwt-security-annotation</module>
         <module>jwt-security-common</module>
+        <module>jwt-security-demo-common</module>
+        <module>jwt-security-demo</module>
+        <module>jwt-security-demo-deprecated</module>
     </modules>
 
     <groupId>com.share.co.kcl.security</groupId>
